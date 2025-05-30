@@ -1,6 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:todo_list_app/screens/signin_screen.dart';
+import 'package:todo_list_app/main.dart';
+
+import '../widgets/add_todo_dialog.dart';
+import '../widgets/todo_list_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,19 +12,59 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
+    final tabs = [
+      TodoListWidget(),
+      Container(),
+    ];
     return Scaffold(
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            FirebaseAuth.instance.signOut().then((value) {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => SignInScreen()));
-            });
-          },
-          child: Text("Logout"),
-        ),
+      appBar: AppBar(
+        title: Text(MyApp.title),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Theme.of(context).primaryColor,
+        unselectedItemColor: Colors.white.withValues(alpha: 0.7),
+        selectedItemColor: Colors.white,
+        currentIndex: selectedIndex,
+        onTap: (index) => setState(() {
+          selectedIndex = index;
+        }),
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.fact_check_outlined),
+            label: 'Todos',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.done, size: 28),
+            label: 'Completed',
+          ),
+        ],
+      ),
+      body: tabs[selectedIndex],
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.black,
+        onPressed: () => showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AddTodoDialogWidget();
+          },
+          barrierDismissible: true,
+        ),
+        child: Icon(Icons.add),
+      ),
+      //   Center(
+      //   child: ElevatedButton(
+      //     onPressed: () {
+      //       FirebaseAuth.instance.signOut().then((value) {
+      //         Navigator.push(context, MaterialPageRoute(builder: (context) => SignInScreen()));
+      //       });
+      //     },
+      //     child: Text("Logout"),
+      //   ),
+      // ),
     );
   }
 }

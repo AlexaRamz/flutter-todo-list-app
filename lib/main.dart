@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_list_app/provider/todos.dart';
 import 'package:todo_list_app/screens/signin_screen.dart';
-import 'firebase_options.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,24 +11,30 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
+  static final String title = 'Todo App';
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Todo List App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        appBarTheme: const AppBarTheme(
-          titleTextStyle: TextStyle(
-            color: Colors.white,
-          ),
-          iconTheme: IconThemeData(
-            color: Colors.white,
+    return ChangeNotifierProvider(
+      create: (BuildContext context) { return TodosProvider(); },
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: title,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          scaffoldBackgroundColor: Color(0xFFf6f5ee),
+          appBarTheme: const AppBarTheme(
+            titleTextStyle: TextStyle(
+              color: Colors.white,
+            ),
+            iconTheme: IconThemeData(
+              color: Colors.white,
+            )
           )
-        )
+        ),
+        home: const SignInScreen(),
       ),
-      home: const SignInScreen(),
     );
   }
 }

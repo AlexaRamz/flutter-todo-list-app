@@ -25,7 +25,6 @@ class _SignupScreenState extends State<SignUpScreen> {
           elevation: 0,
           title: const Text(
             "Sign Up",
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
         ),
         body: Container(

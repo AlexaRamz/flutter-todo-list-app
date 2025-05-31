@@ -3,7 +3,7 @@ class TodoField {
 }
 
 class Todo {
-  String createdTime;
+  DateTime createdTime;
   String title;
   String id;
   String description;

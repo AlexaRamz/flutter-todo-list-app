@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todo_list_app/main.dart';
 
 import '../widgets/add_todo_dialog.dart';
+import '../widgets/completed_list_widget.dart';
 import '../widgets/todo_list_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -18,11 +19,13 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final tabs = [
       TodoListWidget(),
-      Container(),
+      CompletedListWidget(),
     ];
     return Scaffold(
       appBar: AppBar(
-        title: Text(MyApp.title),
+        title: Text(
+          MyApp.title,
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Theme.of(context).primaryColor,

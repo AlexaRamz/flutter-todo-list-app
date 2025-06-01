@@ -10,6 +10,7 @@ class Todo {
   String id;
   String description;
   bool isDone;
+  String userId;
 
   Todo({
     required this.createdTime,
@@ -17,6 +18,7 @@ class Todo {
     this.description = '',
     this.id = '',
     this.isDone = false,
+    this.userId = '',
   });
 
   static Todo fromJson(Map<String, dynamic> json) {
@@ -26,6 +28,7 @@ class Todo {
       description: json['description'],
       id: json['id'],
       isDone: json['isDone'],
+      userId: json['userId'],
     );
   }
   Map<String, dynamic> toJson() {
@@ -35,6 +38,7 @@ class Todo {
       'description': description,
       'id': id,
       'isDone': isDone,
+      'userId': userId,
     };
   }
 }

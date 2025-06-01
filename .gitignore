@@ -44,11 +44,6 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-# Firebase
-android/app/google-services.json
-ios/Runner/GoogleService-Info.plist
-lib/firebase_options.dart
-
 # Windows
 windows/flutter/generated_plugin_registrant.h
 windows/flutter/generated_plugin_registrant.cc

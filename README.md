@@ -21,3 +21,4 @@ This project is a Flutter todo list app that can run on Android. It uses Firebas
 - https://firebase.google.com/docs/flutter/setup?platform=android
 - https://firebase.google.com/docs/auth/flutter/start
 - https://firebase.google.com/docs/cli#windows-npm
+- https://firebase.google.com/docs/rules/rules-and-auth
